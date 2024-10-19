@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import './CreatePost.css'; // Import the CSS file
 
 const CreatePost = () => {
@@ -11,7 +11,7 @@ const CreatePost = () => {
         caption: '',
     });
 
-    const navigate = useNavigate(); // Hook for programmatic navigation
+    // const navigate = useNavigate(); // Hook for programmatic navigation
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
