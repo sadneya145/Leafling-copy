@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ForumNavbar from '../../Forum/ForumNavbar/ForumNavbar';
 import SocialMediaSidebar from '../SocialMediaSidebar/SocialMediaSidebar';
-import Footer from '../../Footer/Footer';
+// import Footer from '../../Footer/Footer';
 import axios from 'axios';
 import './SocilaMedia.css'; // Create this file for your styles
 
