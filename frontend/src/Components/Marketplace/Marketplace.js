@@ -1,6 +1,5 @@
-//marketplace.js
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom'; // Uncomment if needed
 import ProductList from './ProductList';
 import axios from 'axios';
 import './Marketplace.css';
@@ -11,7 +10,6 @@ import Footer from '../Footer/Footer';
 const Marketplace = ({ addOrder }) => {
   const [cart, setCart] = useState([]);
   const [products, setProducts] = useState([]);
-  const [error, setError] = useState('');
   const [selectedCategory, setSelectedCategory] = useState(''); // State for selected category
 
   useEffect(() => {
@@ -23,7 +21,8 @@ const Marketplace = ({ addOrder }) => {
     const token = localStorage.getItem('token');
 
     if (!token) {
-      setError('User is not authenticated. Please log in.');
+      // Consider displaying an error message to the user instead of using a state
+      console.error('User is not authenticated. Please log in.'); 
       return;
     }
 
@@ -36,7 +35,7 @@ const Marketplace = ({ addOrder }) => {
       setCart(response.data || []);
     } catch (error) {
       console.error('Error fetching cart data:', error);
-      setError('Failed to fetch cart data.');
+      // Handle error
     }
   };
 
@@ -46,7 +45,7 @@ const Marketplace = ({ addOrder }) => {
       setProducts(response.data || []);
     } catch (error) {
       console.error('Error fetching products data:', error);
-      setError('Failed to fetch products data.');
+      // Handle error
     }
   };
 
@@ -54,7 +53,7 @@ const Marketplace = ({ addOrder }) => {
     const token = localStorage.getItem('token');
 
     if (!token) {
-      setError('User is not authenticated. Please log in.');
+      console.error('User is not authenticated. Please log in.');
       return;
     }
 
@@ -67,7 +66,6 @@ const Marketplace = ({ addOrder }) => {
       fetchCartData();
     } catch (error) {
       console.error('Error adding to cart:', error);
-      setError('Failed to add item to cart.');
     }
   };
 
@@ -75,7 +73,7 @@ const Marketplace = ({ addOrder }) => {
     const token = localStorage.getItem('token');
 
     if (!token) {
-      setError('User is not authenticated. Please log in.');
+      console.error('User is not authenticated. Please log in.');
       return;
     }
 
@@ -88,31 +86,12 @@ const Marketplace = ({ addOrder }) => {
       fetchCartData();
     } catch (error) {
       console.error('Error removing from cart:', error);
-      setError('Failed to remove item from cart.');
     }
   };
 
-  const updateQuantity = (productId, quantity) => {
-    if (quantity <= 0) {
-      removeFromCart(productId);
-    } else {
-      setCart(cart.map(item =>
-        item.id === productId ? { ...item, quantity } : item
-      ));
-    }
-  };
-
-  const handleCheckout = () => {
-    const totalAmount = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
-    const orderDetails = {
-      items: cart,
-      total: totalAmount,
-      date: new Date().toISOString(),
-    };
-
-    addOrder(orderDetails);
-    setCart([]);
-  };
+  // You can re-add these functions later if needed
+  // const updateQuantity = (productId, quantity) => { /* Function logic */ };
+  // const handleCheckout = () => { /* Function logic */ };
 
   // Function to handle category selection
   const handleCategorySelect = (category) => {
