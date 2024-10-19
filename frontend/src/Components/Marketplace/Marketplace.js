@@ -8,7 +8,7 @@ import SecondaryNavbar from './MarketPlaceSidebar/SecondSidebar';
 import Footer from '../Footer/Footer';
 
 const Marketplace = ({ addOrder }) => {
-  const [cart, setCart] = useState([]);
+  // const [cart, setCart] = useState([]);
   const [products, setProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(''); // State for selected category
 
