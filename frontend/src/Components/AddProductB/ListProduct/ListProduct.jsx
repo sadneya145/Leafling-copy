@@ -3,7 +3,7 @@ import './ListProduct.css'
 import cross_icon from '../../../images/Assets/cross_icon.svg'
 import Navbar from '../../Navbar/Navbar'
 import Footer from '../../Footer/Footer'
-import Sidebar from '../Sidebar/Sidebar'
+// import Sidebar from '../Sidebar/Sidebar'
 
 const ListProduct = () => {
   const [allproducts, setAllProducts] = useState([])
