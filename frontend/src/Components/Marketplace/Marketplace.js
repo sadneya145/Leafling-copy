@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import { Link } from 'react-router-dom'; // Uncomment if needed
 import ProductList from './ProductList';
 import axios from 'axios';
 import './Marketplace.css';
@@ -8,9 +7,9 @@ import SecondaryNavbar from './MarketPlaceSidebar/SecondSidebar';
 import Footer from '../Footer/Footer';
 
 const Marketplace = ({ addOrder }) => {
-  // const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState([]); // State for cart
   const [products, setProducts] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState(''); // State for selected category
+  const [selectedCategory, setSelectedCategory] = useState('');
 
   useEffect(() => {
     fetchCartData();
@@ -21,8 +20,7 @@ const Marketplace = ({ addOrder }) => {
     const token = localStorage.getItem('token');
 
     if (!token) {
-      // Consider displaying an error message to the user instead of using a state
-      console.error('User is not authenticated. Please log in.'); 
+      console.error('User is not authenticated. Please log in.');
       return;
     }
 
@@ -35,7 +33,6 @@ const Marketplace = ({ addOrder }) => {
       setCart(response.data || []);
     } catch (error) {
       console.error('Error fetching cart data:', error);
-      // Handle error
     }
   };
 
@@ -45,7 +42,6 @@ const Marketplace = ({ addOrder }) => {
       setProducts(response.data || []);
     } catch (error) {
       console.error('Error fetching products data:', error);
-      // Handle error
     }
   };
 
@@ -89,11 +85,6 @@ const Marketplace = ({ addOrder }) => {
     }
   };
 
-  // You can re-add these functions later if needed
-  // const updateQuantity = (productId, quantity) => { /* Function logic */ };
-  // const handleCheckout = () => { /* Function logic */ };
-
-  // Function to handle category selection
   const handleCategorySelect = (category) => {
     setSelectedCategory(category);
   };
@@ -112,6 +103,24 @@ const Marketplace = ({ addOrder }) => {
           <ProductList products={filteredProducts} addToCart={addToCart} removeFromCart={removeFromCart} />
         </div>
       </div>
+
+      {/* Cart Section */}
+      <div className="cart-section">
+        <h3>Your Cart</h3>
+        {cart.length === 0 ? (
+          <p>Your cart is empty.</p>
+        ) : (
+          <ul>
+            {cart.map(item => (
+              <li key={item.id}>
+                {item.name} - Price: &#8377;{item.price.toFixed(2)} 
+                <button onClick={() => removeFromCart(item.id)}>Remove</button>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+
       <Footer />
     </div>
   );
