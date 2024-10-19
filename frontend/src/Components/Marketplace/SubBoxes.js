@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './SubBoxes.css'; // Import your custom CSS file
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+// import { Link } from 'react-router-dom';
+// import axios from 'axios';
 import Navbar from '../Navbar/Navbar'; // Import the Navbar
 import Footer from '../Footer/Footer';
-import sub1 from '../../Assets/hero_right.png';
-import sub2 from '../../Assets/hero_right.png';
-import sub3 from '../../Assets/hero_right.png';
-import sub4 from '../../Assets/hero_right.png';
+// import sub1 from '../../Assets/hero_right.png';
+// import sub2 from '../../Assets/hero_right.png';
+// import sub3 from '../../Assets/hero_right.png';
+// import sub4 from '../../Assets/hero_right.png';
 
 // Carousel component for displaying subscription box images with auto-slide
 const BannerImage = () => {
@@ -82,7 +82,7 @@ const Cards = () => {
 };
 
 const SubBoxes = () => {
-    const [buttonPopup, setButtonPopup] = useState(false);
+    // const [buttonPopup, setButtonPopup] = useState(false);
 
     return (
         <div>
